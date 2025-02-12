@@ -22,7 +22,7 @@ public class Library {
         }
 		
 		if(count >= books.length) {
-			System.out.println("There is no more space for to add new books");
+			System.out.println("\nThere is no more space for to add book: " + book.getTitle() +"\n");
 			return false;
 		}
 		
@@ -31,7 +31,7 @@ public class Library {
 		books[count] = book;
 		count++;
 		
-		System.out.println("Book added successfully!");
+		System.out.println("Book added successfully!\n");
 		
 		return true;
 	}
@@ -116,6 +116,7 @@ public class Library {
 		for(int i = 0; i < count; i++) {
 			System.out.println(i+1 + ". " + books[i]);
 		}
+		//System.out.println("\n");
 	
 	}
 }
