@@ -50,13 +50,14 @@ public class Book {
 		return title;
 	}
 	public void setTitle(String title) {
-		this.title = title;
+		this.title = (title == null || title.strip().isEmpty()) ? "Unknown Author" : title.strip(); //clean input and check edge cases
 	}
 	public String getAuthor() {
 		return author;
 	}
 	public void setAuthor(String author) {
-		this.author = author;
+		
+		 this.author = (author == null || author.strip().isEmpty()) ? "Unknown Author" : author.strip(); //clean input and check edge cases
 	}
 	public String getISBN() {
 		return ISBN;
@@ -102,9 +103,5 @@ public class Book {
 		return title + " by " + author + " (ISBN: " + ISBN + "), $" + price;
 		
 	}
-	
-	
- 
-	
 	
 }
