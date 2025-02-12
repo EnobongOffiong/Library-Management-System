@@ -1,11 +1,21 @@
 package library.management;
 
+/**
+ * The Book class represents a book with a title, author, ISBN, and price.
+ * It provides constructors for initializing a book, getter and setter methods for accessing 
+ * book attributes, and overrides equals and toString methods for comparison 
+ * and string representation.
+ */
 public class Book {
 	private String title;
 	private String author;
 	private String ISBN;
 	private double price; 
 	
+	/**
+     * Default constructor that initializes a book with default values.
+     * Title, author, and ISBN are set to "Unknown," and price is set to 0.0.
+     */
 	public Book() {
 		 title = "Unknown";
 		 author = "Unknown";
@@ -13,9 +23,11 @@ public class Book {
 		 price = 0.0;	
 		 
 		 //no "this" needed because there is no parameters  
-		
 	}
-	//parameterized constructor 
+	
+	/**
+     * Constructs a Book object with specified values.
+     */
 	public Book(String title, String author, String ISBN, double price) {
 		this.title = title;
 		this.author = author;
@@ -23,13 +35,17 @@ public class Book {
 		this.price = price; 
 		
 	}
-	//copy constructor 
+	
+	/**
+     * Copy constructor that creates a new Book object as a copy of an existing one.
+     */
 	public Book(Book copy) {
 		this.title = copy.title;
 		this.author = copy.author;
 		this.ISBN = copy.ISBN;
 		this.price = copy.price;
 	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -52,8 +68,21 @@ public class Book {
 		return price;
 	}
 	public void setPrice(double price) {
+			
+		//Make sure price is greater than 0
+		    if (price < 0) {
+		        System.out.println("Warning: Price cannot be negative. Setting to $0.00.");
+		        this.price = 0.0;
+		    } else {
+		        this.price = price;
+		  }
+		
 		this.price = price;
 	}
+	
+	/**
+     * Compares this book with another object based on ISBN.
+     */
 	@Override
 	public boolean equals(Object other) {
 		Book b = (Book) other; //casting because need to access specific fields in Book class 
@@ -63,6 +92,11 @@ public class Book {
 
 		}
 	
+	/**
+     * Returns a string representation of the book.
+     * 
+     * @return A formatted string containing the book's title, author, ISBN, and price.
+     */
 	@Override
 	public String toString() {
 		return title + " by " + author + " (ISBN: " + ISBN + "), $" + price;
