@@ -16,7 +16,12 @@ public class Library {
 	 * 			Returns true if the addition was successful.
 	 */
 	public boolean addBook(Book book) {
-		if(count >= 5) {
+		if (book == null) {
+            System.out.println("Cannot add a null book.");
+            return false;
+        }
+		
+		if(count >= books.length) {
 			System.out.println("There is no more space for to add new books");
 			return false;
 		}
@@ -41,13 +46,18 @@ public class Library {
 	 * 			Returns true if the book was found and removed.
 	 */
 	public boolean removeBook(Book book) {
+		if (book == null) {
+            System.out.println("Cannot remove a null book.");
+            return false;
+        }
+		
 		if(count == 0) {
 			System.out.println("There are no books in your Library");
 			return false;
 		}
 		
 		for(int i = 0; i < count; i++) {
-			if(books[i].getISBN().equals(book.getISBN())) {
+			if(books[i] != null && books[i].getISBN().equals(book.getISBN())) {
 				System.out.println("Removing book: " + book.getTitle());
 				
 				for (int j = i; j < count - 1; j++) {
@@ -75,6 +85,11 @@ public class Library {
      */
 	 
 	public Book searchByISBN(String ISBN) {
+		if (ISBN == null) {
+            System.out.println("Cannot search for a null ISBN.");
+            return null;
+        }
+		
 		for(int i = 0 ; i < count; i++) {
 			if(books[i] != null) {
 			if(books[i].getISBN().equals(ISBN)) {
